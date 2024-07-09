@@ -7,7 +7,7 @@ spring:
       enabled: true
       path: /h2-console
   datasource:
-    url: jdbc:h2:file:~/orderDetail
+    url: jdbc:h2:file:~/orderDetails
     username: sa
     password: password
     driverClassName: org.h2.Driver
@@ -15,6 +15,17 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+  application:
+        name: ORDER-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
 
 
 

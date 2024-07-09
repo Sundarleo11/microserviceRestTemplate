@@ -15,8 +15,8 @@ public class orderService {
     @Autowired
     private OrderRepositry orderRepositry;
 
-    //@Autowired
-    //private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
 
     public order bookOrder(order orderDetail) {
@@ -34,10 +34,11 @@ public class orderService {
         payments.setOrderId(order.getId());
         payments.setPrice(order.getPrice());
 
-        RestTemplate restTemplate = new RestTemplate();
+      //  RestTemplate restTemplate = new RestTemplate();
 
-        payment paymentResponce = restTemplate.postForObject("http://localhost:9092/payment/doPayment", payments, payment.class);
-
+       // payment paymentResponce = restTemplate.postForObject("http://localhost:9092/payment/doPayment", payments, payment.class);
+       //payment-service
+         payment paymentResponce = restTemplate.postForObject("http://payment-service/payment/doPayment", payments, payment.class);
         orderRepositry.save(order);
 
         resStatus = paymentResponce.getPaymentStatus().equals("success") ? "Successful TransactionalRequest" : "Failure TransactionalRequest";

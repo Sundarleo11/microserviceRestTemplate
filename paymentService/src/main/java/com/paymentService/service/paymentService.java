@@ -12,20 +12,25 @@ import java.util.UUID;
 public class paymentService {
 
     @Autowired
-    private paymentRepositry paymentRepository;
+    private paymentRepositry paymentRepositorys;
 
 
     public payment savePayment(payment payment) {
+        System.out.println("payment"+payment);
 
         //payment.setPaymentStatus(payment.getPaymentStatus());
         payment.setPaymentStatus(ProcessOfPayment());
         payment.setTransactionId(UUID.randomUUID().toString());
-        return paymentRepository.save(payment);
+        return paymentRepositorys.save(payment);
     }
 
     private String ProcessOfPayment(){
         return new Random().nextBoolean() ? "success" : "failure";
 
+    }
 
+    public payment getpaymentInfo(int orderId){
+        System.out.println("orderID service"+orderId);
+        return paymentRepositorys.findByOrderId(orderId);
     }
 }

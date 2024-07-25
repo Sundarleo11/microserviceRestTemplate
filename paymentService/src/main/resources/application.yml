@@ -7,7 +7,7 @@ spring:
       enabled: true
       path: /h2-console
   datasource:
-    url: jdbc:h2:file:~/paymentDetails
+    url: jdbc:h2:file:~/paymentDetailst
     username: sa
     password: password
     driverClassName: org.h2.Driver
@@ -16,7 +16,7 @@ spring:
     hibernate:
       ddl-auto: update
   application:
-    name: payment-service
+    name: PAYMENT-SERVICE
 
 eureka:
   client:

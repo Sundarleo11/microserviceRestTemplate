@@ -26,6 +26,8 @@ public class orderService {
 
      public TransactionalResponce BookOrderPayment(TransactionalRequest request) {
 
+        System.out.println("request"+request);
+
         String resStatus = "";
 
         order order = request.getOrders();
@@ -33,12 +35,13 @@ public class orderService {
         payment payments = request.getPayments();
         payments.setOrderId(order.getId());
         payments.setPrice(order.getPrice());
+        System.out.println("payments"+payments);
 
       //  RestTemplate restTemplate = new RestTemplate();
 
        // payment paymentResponce = restTemplate.postForObject("http://localhost:9092/payment/doPayment", payments, payment.class);
        //payment-service
-         payment paymentResponce = restTemplate.postForObject("http://payment-service/payment/doPayment", payments, payment.class);
+        payment paymentResponce = restTemplate.postForObject("http://PAYMENT-SERVICE/payment/doPayment", payments, payment.class);
         orderRepositry.save(order);
 
         resStatus = paymentResponce.getPaymentStatus().equals("success") ? "Successful TransactionalRequest" : "Failure TransactionalRequest";

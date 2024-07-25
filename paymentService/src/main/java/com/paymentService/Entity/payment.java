@@ -26,5 +26,5 @@ public class payment {
 
     private int price;
 
-    private int OrderId;
+    private int orderId;
 }

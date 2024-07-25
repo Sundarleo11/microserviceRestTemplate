@@ -16,7 +16,9 @@ public class OrderServiceApplication {
 		SpringApplication.run(OrderServiceApplication.class, args);
 
 	}
-	@Bean
+
+
+  	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate(){
 		return new RestTemplate();

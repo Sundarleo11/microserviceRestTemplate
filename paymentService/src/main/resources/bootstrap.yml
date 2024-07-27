@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      enabled: true
+      uri:
+        - http://localhost:9196   ### your port for cloud config server
+      label: main                 ### your git repo branch name
+
+
